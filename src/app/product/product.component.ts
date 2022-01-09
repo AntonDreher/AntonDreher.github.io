@@ -10,6 +10,9 @@ export class ProductComponent implements OnInit {
   @Input() currentProduct: Product;
   constructor() { }
 
+  addToCart() {
+    //TODO
+  }
   ngOnInit(): void {
   }
 
