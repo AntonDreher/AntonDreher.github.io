@@ -6,4 +6,5 @@ export class Product {
     category: number[] = [];
     allergens: string[] = [];
     status: string = "";
+    
 }
