@@ -1,0 +1,16 @@
+<h1>Checkout</h1>
+<h2>Overview</h2>
+<ul>
+    <li *ngFor="let product of products">
+        <a>{{product.title}} * </a>
+        <a>{{product.amount}}</a>
+        <a>={{product.amount*product.price}}€</a>
+    </li>
+</ul>
+<p>Total: {{getTotalPrice()}}</p>
+<button (click)="goBack()">Back</button>
+<a routerLink="/pay">
+    <button (click)="pay()">Pay</button>
+</a>
+
+<router-outlet></router-outlet>

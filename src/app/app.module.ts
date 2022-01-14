@@ -11,6 +11,8 @@ import { AuthorizationComponent } from './authorization/authorization.component'
 import { AuthorizationService } from './authorization/authorization.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './helper/authconfig.interceptor';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { PayComponent } from './pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AuthInterceptor } from './helper/authconfig.interceptor';
     ProductComponent,
     ProductListComponent,
     ShoppingCartComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    CheckoutComponent,
+    PayComponent
   ],
   imports: [
     HttpClientModule,
