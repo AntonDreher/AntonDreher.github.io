@@ -1,5 +1,11 @@
-<p>
-    <input type="text" id="username" name="username" [(ngModel)]="username">
-    <input type="password" id="password" name="password" [(ngModel)]="password">
-    <button type="button" (click)="login()">login</button>
-</p>
+<div *ngIf="this.authorizationService.isLoggedIn; else loggedOut">
+    {{redirectToDefault()}}
+</div>
+
+<ng-template #loggedOut>
+    <p>
+        <input type="text" id="username" name="username" [(ngModel)]="username">
+        <input type="password" id="password" name="password" [(ngModel)]="password">
+        <button type="button" (click)="login()">login</button>
+    </p>
+</ng-template>

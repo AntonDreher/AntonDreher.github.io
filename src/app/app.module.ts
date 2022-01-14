@@ -9,7 +9,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { AuthorizationService } from './authorization/authorization.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './helper/authconfig.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,14 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthorizationService],
+  providers: [
+    AuthorizationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

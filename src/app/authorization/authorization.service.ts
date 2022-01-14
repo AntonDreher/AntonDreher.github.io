@@ -19,4 +19,13 @@ export class AuthorizationService {
         }
         return this.http.post<string>(baseURL + '/login', JSON.stringify(loginData), options);
     }
+
+    getToken() {
+        return localStorage.getItem('access_token');
+    }
+
+    get isLoggedIn(): boolean {
+        let authToken = localStorage.getItem('access_token');
+        return (authToken !== null) ? true : false;
+    }
 }
