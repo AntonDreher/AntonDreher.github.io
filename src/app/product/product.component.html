@@ -1,5 +1,10 @@
-<h2>{{currentProduct.title}}</h2>
-<p>{{currentProduct.desc}}</p>
-<p>
-    <button type="button" (click)="addToCart()">Add to Cart</button>
-</p>
+<div *ngIf="currentProduct">
+    <h2>{{currentProduct.title}}</h2>
+    <p>{{currentProduct.desc}}</p>
+    <p>Price: {{currentProduct.price}}€</p>
+    <p>Allergens: {{currentProduct.allergens}}</p>
+    <p>
+    <button type="button" (click)="addToCart(currentProduct)">Add to Cart</button>
+    <button type="button" (click)="likeProduct(currentProduct)">like</button>
+    </p>
+</div>

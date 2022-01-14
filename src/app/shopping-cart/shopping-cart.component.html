@@ -1,1 +1,13 @@
-<p>shopping-cart works!</p>
+<h1>Shopping Cart!</h1>
+<ul>
+    <li *ngFor="let product of products">
+        <p>{{product.title}}</p>
+        <button (click)="lowerAmount(product)">-</button><a>{{product.amount}}</a> <button (click)="upAmount(product)">+</button>
+        <p>Price: {{product.amount*product.price}}</p>
+    </li>
+    <li>
+        <a>Total Price= {{getTotalPrice()}}   </a> <button (click)="clearCart()">Clear Cart!</button>
+    </li>
+</ul>
+<button (click)="checkout()">Checkout</button>
+
