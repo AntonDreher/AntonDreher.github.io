@@ -21,7 +21,13 @@ export class AuthorizationService {
     }
 
     getToken() {
-        return localStorage.getItem('access_token');
+        let token: string;
+        if (localStorage.getItem('access_token') === null) {
+            token = '';
+        } else {
+            token = localStorage.getItem('access_token')!;
+        }
+        return token;
     }
 
     get isLoggedIn(): boolean {

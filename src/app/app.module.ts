@@ -13,6 +13,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './helper/authconfig.interceptor';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PayComponent } from './pay/pay.component';
+import { ProductListService } from './product-list/product-list-service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PayComponent } from './pay/pay.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    ProductListService
   ],
   bootstrap: [AppComponent]
 })
