@@ -1,1 +1,2 @@
-<a href="#" class="tm-paging-link">{{currentCategory.category_name}}</a>
+<button [ngClass]="{'tm-paging-link':true}" (click)="selectCategory()">{{currentCategory.category_name}}</button>
+<!-- TODO highlight selected-->

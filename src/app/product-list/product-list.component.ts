@@ -24,6 +24,23 @@ export class ProductListComponent implements OnInit {
     )
   }
 
+  onCategorySelected(eventData: { category_id: number }) {
+    console.log(eventData);
+    if (eventData.category_id === 0) {
+      this.updateProductList();
+    } else {
+      this.productListService.getProductListByCategory(eventData.category_id).subscribe(
+        (productList: Product[]) => {
+          console.log(productList);
+          this.productList = productList;
+        },
+        (error) => {
+          console.log(error.stack);
+        }
+      )
+    }
+  }
+
   ngOnInit(): void {
   }
 

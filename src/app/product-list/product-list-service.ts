@@ -16,4 +16,11 @@ export class ProductListService {
         });
         return this.http.get<Product[]>(baseUrl + '/products');
     }
+
+    getProductListByCategory(category_id: number) {
+        let httpHeaders = new HttpHeaders({
+            'Authorization': this.authorization.getToken(),
+        });
+        return this.http.get<Product[]>(baseUrl + '/products/bycategory/' + category_id);
+    }
 }

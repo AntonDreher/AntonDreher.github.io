@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Category } from '../model/category';
 import { CategoryListService } from './category-list-service';
 
@@ -10,6 +10,7 @@ import { CategoryListService } from './category-list-service';
 export class CategoryListComponent implements OnInit {
   categoryList: Category[] = [];
   defaultCategory: Category = new Category(0, 'All');
+  @Output() categorySelected = new EventEmitter<{ category_id: number }>();
   constructor(public categoryListService: CategoryListService) {
     this.updateCategoryList();
   }
@@ -24,6 +25,10 @@ export class CategoryListComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  onCategorySelected(eventData: { category_id: number }) {
+    this.categorySelected.emit({ category_id: eventData.category_id });
   }
 
   ngOnInit(): void {

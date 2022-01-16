@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 })
 export class CartService {
   private cartItems: CartItem[];
- 
+
   constructor() {
     this.cartItems = [];
   }
@@ -24,10 +24,9 @@ export class CartService {
     toAdd.price = product.price;
     toAdd.title = product.title;
     toAdd.amount = 1;
-    console.log("yo");
-    if(this.getIDs().includes(toAdd.itemId)) {
-      this.cartItems.forEach(function(cartItem) {
-        if (cartItem.itemId == toAdd.itemId) {
+    if (this.getIDs().includes(toAdd.itemId)) {
+      this.cartItems.forEach(function (cartItem) {
+        if (cartItem.itemId === toAdd.itemId) {
           cartItem.amount += toAdd.amount;
           console.log(cartItem.amount)
         }
@@ -36,21 +35,18 @@ export class CartService {
       this.cartItems.push(toAdd);
       console.log(toAdd.amount);
     }
-
-    
-    console.log(this.cartItems.length);
   }
 
-  public updateAmount(id: number, newAmount :number) {
-    this.cartItems.forEach(function(cartItem) {
-      if (cartItem.itemId == id) {
+  public updateAmount(id: number, newAmount: number) {
+    this.cartItems.forEach(function (cartItem) {
+      if (cartItem.itemId === id) {
         cartItem.amount = newAmount;
       }
     })
   }
 
   public removeItem(item: CartItem) {
-    this.cartItems = this.cartItems.filter(function(obj) {
+    this.cartItems = this.cartItems.filter(function (obj) {
       return obj.itemId !== item.itemId;
     })
   }
@@ -61,15 +57,15 @@ export class CartService {
 
   public calculateTotalPrice() {
     let totalPrice = 0;
-    this.cartItems.forEach(function(cartItem) {
-      totalPrice += cartItem.price*cartItem.amount;
+    this.cartItems.forEach(function (cartItem) {
+      totalPrice += cartItem.price * cartItem.amount;
     })
     return totalPrice;
   }
 
   private getIDs() {
     let ids: number[] = [];
-    this.cartItems.forEach(function(cartItem) {
+    this.cartItems.forEach(function (cartItem) {
       ids.push(cartItem.itemId);
     })
 
