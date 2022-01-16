@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from '../authorization/authorization.service';
 import { Product } from '../model/product';
 import { ProductListService } from './product-list-service';
 

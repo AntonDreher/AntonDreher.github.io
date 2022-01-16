@@ -1,10 +1,9 @@
-.app-product-list p{
-    color:blue;
-}
-
-h1 {
-    color: blue;
-}
-nav a {
-    padding: 2em;
-}
+html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }

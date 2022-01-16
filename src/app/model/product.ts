@@ -4,5 +4,4 @@ export class Product {
     description: string = "";
     price: number = 0.0;
     status: boolean = false;
-
 }
