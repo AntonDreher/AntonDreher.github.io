@@ -1,0 +1,7 @@
+<div class="tm-paging-links">
+    <nav>
+        <app-category (categorySelected)=onCategorySelected($event) class="tm-paging-item"
+            *ngFor="let category of categoryList" [currentCategory]="category">
+        </app-category>
+    </nav>
+</div>

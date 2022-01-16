@@ -1,11 +1,57 @@
-p {
-    color: blue;
+.col-lg-3,
+.col-lg-4,
+.col-lg-6,
+.col-md-4,
+.col-md-6,
+.col-sm-6, 
+.col-12 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-h2 {
-    color: red;
+.tm-gallery-item {
+    max-width: 280px;
 }
 
-div {
-    width: 60%;
+.tm-gallery-title {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #1A6692;
+    margin-bottom: 15px;
 }
+
+.tm-gallery-description {
+    margin-bottom: 20px;
+  }
+
+    
+  .tm-gallery-price {
+    font-size: 1.25rem;
+    color: #2F956D;
+  }
+
+  .checkout-button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .like-button{
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: lightblue;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }

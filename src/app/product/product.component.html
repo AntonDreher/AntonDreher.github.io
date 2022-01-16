@@ -1,10 +1,11 @@
-<div *ngIf="currentProduct">
-    <h2>{{currentProduct.title}}</h2>
-    <p>{{currentProduct.desc}}</p>
-    <p>Price: {{currentProduct.price}}€</p>
-    <p>Allergens: {{currentProduct.allergens}}</p>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item" *ngIf="currentProduct">
+    <h4 class="tm-gallery-title">{{currentProduct.title}}</h4>
+    <p class="tm-gallery-description">{{currentProduct.description}}</p>
+    <p class="tm-gallery-price">Price: {{currentProduct.price}}€</p>
+    <!-- TODO<p>Allergens: {{currentProduct.allergens}}</p>-->
+    <!-- TODO show disabled products in grey-->
     <p>
-    <button type="button" (click)="addToCart(currentProduct)">Add to Cart</button>
-    <button type="button" (click)="likeProduct(currentProduct)">like</button>
+        <button class="checkout-button" type="button" (click)="addToCart(currentProduct)">Add to Cart</button>
+        <button class="like-button" type="button" (click)="likeProduct(currentProduct)">like</button>
     </p>
-</div>
+</article>

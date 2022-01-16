@@ -13,6 +13,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './helper/authconfig.interceptor';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PayComponent } from './pay/pay.component';
+import { ProductListService } from './product-list/product-list-service';
+import { CategoryComponent } from './category/category.component';
+import { CategoryListComponent } from './category-list/category-list.component';
+import { CategoryListService } from './category-list/category-list-service';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { PayComponent } from './pay/pay.component';
     ShoppingCartComponent,
     AuthorizationComponent,
     CheckoutComponent,
-    PayComponent
+    PayComponent,
+    CategoryComponent,
+    CategoryListComponent
   ],
   imports: [
     HttpClientModule,
@@ -36,7 +42,9 @@ import { PayComponent } from './pay/pay.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    ProductListService,
+    CategoryListService
   ],
   bootstrap: [AppComponent]
 })

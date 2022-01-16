@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import globalProductList from '../../assets/menu_Items.json'
 import { Product } from '../model/product';
+import { ProductListService } from './product-list-service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,9 +9,36 @@ import { Product } from '../model/product';
 })
 export class ProductListComponent implements OnInit {
   productList: Product[] = [];
-  constructor() {
-    this.productList = globalProductList;
-    console.log(this.productList);
+  constructor(public productListService: ProductListService) {
+    this.updateProductList();
+  }
+
+  private updateProductList() {
+    this.productListService.getProductList().subscribe(
+      (productList: Product[]) => {
+        this.productList = productList;
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
+
+  onCategorySelected(eventData: { category_id: number }) {
+    console.log(eventData);
+    if (eventData.category_id === 0) {
+      this.updateProductList();
+    } else {
+      this.productListService.getProductListByCategory(eventData.category_id).subscribe(
+        (productList: Product[]) => {
+          console.log(productList);
+          this.productList = productList;
+        },
+        (error) => {
+          console.log(error.stack);
+        }
+      )
+    }
   }
 
   ngOnInit(): void {
