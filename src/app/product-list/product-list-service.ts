@@ -10,7 +10,6 @@ export class ProductListService {
     constructor(private http: HttpClient, private authorization: AuthorizationService) { }
 
     getProductList(): Observable<Product[]> {
-        //TODO this should not work
         let httpHeaders = new HttpHeaders({
             'Authorization': this.authorization.getToken(),
         });

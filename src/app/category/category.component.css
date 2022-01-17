@@ -1,9 +1,3 @@
-.tm-paging-link.active,
-.tm-paging-link:hover {
-  background-color: #2F956D;
-  color: white;
-}
-
 .tm-paging-link {
   padding: 10px 30px;
   display: flex;
@@ -12,4 +6,10 @@
   text-decoration: none;
   color: #2F956D;
   background-color: transparent;
+}
+
+.tm-paging-link.active,
+.tm-paging-link:hover {
+  background-color: #2F956D;
+  color: white;
 }

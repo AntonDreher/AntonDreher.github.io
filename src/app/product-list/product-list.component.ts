@@ -31,7 +31,6 @@ export class ProductListComponent implements OnInit {
     } else {
       this.productListService.getProductListByCategory(eventData.category_id).subscribe(
         (productList: Product[]) => {
-          console.log(productList);
           this.productList = productList;
         },
         (error) => {

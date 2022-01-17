@@ -19,8 +19,9 @@ export class AuthorizationComponent implements OnInit {
     let loginData: Login = new Login(this.username, this.password);
     this.authorizationService.login(loginData).subscribe(
       (response: any) => {
-        localStorage.setItem('access_token', response.token)
-        this.router.navigate(['/products'])
+        localStorage.setItem('access_token', response.token);
+        this.router.navigate(['/products']);
+        console.log(1);
       },
       (error) => {
         //TODO 
