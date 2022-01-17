@@ -1,4 +1,6 @@
-<div class="tm-gallery-page">
+<div class="tm-paging-links">
     <app-category-list (categorySelected)=onCategorySelected($event)></app-category-list>
+</div>
+<div class="tm-gallery-page">
     <app-product *ngFor="let product of productList" [currentProduct]="product"></app-product>
 </div>

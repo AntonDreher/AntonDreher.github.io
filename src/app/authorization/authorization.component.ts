@@ -10,17 +10,20 @@ import { Router } from '@angular/router';
 })
 
 export class AuthorizationComponent implements OnInit {
-  username: string = 'table1';
-  password: string = 'table1';
 
   constructor(public authorizationService: AuthorizationService, private router: Router) { }
 
-  login() {
-    let loginData: Login = new Login(this.username, this.password);
+  login(event: any) {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var user = idAttr.nodeValue;
+    var pass = idAttr.nodeValue;
+    let loginData: Login = new Login(user, pass);
     this.authorizationService.login(loginData).subscribe(
       (response: any) => {
-        localStorage.setItem('access_token', response.token)
-        this.router.navigate(['/products'])
+        localStorage.setItem('access_token', response.token);
+        this.router.navigate(['/products']);
+        console.log(1);
       },
       (error) => {
         //TODO 

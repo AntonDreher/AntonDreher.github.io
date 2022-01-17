@@ -4,8 +4,19 @@
 
 <ng-template #loggedOut>
     <p>
-        <input type="text" id="username" name="username" [(ngModel)]="username">
-        <input type="password" id="password" name="password" [(ngModel)]="password">
-        <button type="button" (click)="login()">login</button>
+        <a>
+            <img title="Table 1" id="table1" src="assets/qrcodes/table1.png" alt="image" (click)="login($event)">
+        </a>
+        <a>
+            <img title="Table 2" id="table2" src="assets/qrcodes/table2.png" alt="image" (click)="login($event)">
+        </a>
+    </p>
+    <p>
+        <a>
+            <img title="Table 3" id="table3" src="assets/qrcodes/table3.png" alt="image" (click)="login($event)">
+        </a>
+        <a>
+            <img title="Table 4" id="table4" src="assets/qrcodes/table4.png" alt="image" (click)="login($event)">
+        </a>
     </p>
 </ng-template>
