@@ -20,7 +20,7 @@ export class CartService {
 
   public addItem(product: Product) {
     let toAdd = new CartItem();
-    toAdd.itemId = product.itemId;
+    toAdd.itemId = product.product_id;
     toAdd.price = product.price;
     toAdd.title = product.title;
     toAdd.amount = 1;

@@ -1,6 +1,6 @@
 <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item" *ngIf="currentProduct">
     <figure>
-        <img src="assets/1.jpg" alt="image" class="img-fluid tm-gallery-img">
+        <img [src]=imageURL alt="image" class="img-fluid tm-gallery-img">
         <figcaption>
             <h4 class="tm-gallery-title">{{currentProduct.title}}</h4>
             <p class="tm-gallery-description">{{currentProduct.description}}</p>

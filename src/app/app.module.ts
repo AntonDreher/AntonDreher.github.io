@@ -17,6 +17,7 @@ import { ProductListService } from './product-list/product-list-service';
 import { CategoryComponent } from './category/category.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryListService } from './category-list/category-list-service';
+import { ProductService } from './product/product-service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CategoryListService } from './category-list/category-list-service';
       multi: true
     },
     ProductListService,
-    CategoryListService
+    CategoryListService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
