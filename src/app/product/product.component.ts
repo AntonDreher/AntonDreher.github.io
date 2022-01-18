@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../model/product';
 import { Input } from '@angular/core';
-import { CartService } from '../cart.service';
+import { CartService } from '../shopping-cart/cart.service';
 import { ProductService } from './product-service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 @Component({
@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
 
   addToCart(prodToAdd: Product): void {
     //TODO
-    this.cartService.addItem(prodToAdd);
+    this.cartService.addItem(prodToAdd, this.imageURL);
   }
 
   likeProduct(prod: Product): void {

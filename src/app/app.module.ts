@@ -29,7 +29,7 @@ import { ProductService } from './product/product-service';
     CheckoutComponent,
     PayComponent,
     CategoryComponent,
-    CategoryListComponent
+    CategoryListComponent,
   ],
   imports: [
     HttpClientModule,
