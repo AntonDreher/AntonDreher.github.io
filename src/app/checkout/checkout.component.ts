@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { CartService } from '../cart.service';
+import { CartService } from '../shopping-cart/cart.service';
 import { CartItem } from '../model/cartItem';
 
 @Component({
@@ -10,7 +10,7 @@ import { CartItem } from '../model/cartItem';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  products :CartItem[] = [];
+  products: CartItem[] = [];
   constructor(
     private route: ActivatedRoute,
     private Location: Location,
@@ -26,12 +26,12 @@ export class CheckoutComponent implements OnInit {
     this.cartService.getItems().subscribe(products => this.products = products);
   }
 
-  getTotalPrice() :number {
+  getTotalPrice(): number {
     return this.cartService.calculateTotalPrice();
   }
 
-  pay() :void {
-    
+  pay(): void {
+
   }
 
 

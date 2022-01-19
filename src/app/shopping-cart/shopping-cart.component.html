@@ -1,13 +1,39 @@
-<h1>Shopping Cart!</h1>
-<ul>
-    <li *ngFor="let product of products">
-        <p>{{product.title}}</p>
-        <button (click)="lowerAmount(product)">-</button><a>{{product.amount}}</a> <button (click)="upAmount(product)">+</button>
-        <p>Price: {{product.amount*product.price}}</p>
-    </li>
-    <li>
-        <a>Total Price= {{getTotalPrice()}}   </a> <button (click)="clearCart()">Clear Cart!</button>
-    </li>
-</ul>
-<button (click)="checkout()">Checkout</button>
+<div class="Cart">
+    <div class="CartContainer">
+        <div class="Header">
+            <h3 class="Heading">Shopping Cart</h3>
+            <h5 class="Action" (click)="clearCart()">Remove all</h5>
+        </div>
 
+        <div class="Cart-Items pad" *ngFor="let cartItem of cartItems">
+            <div class="image-box">
+                <img [src]="cartItem.imageUrl" style='height:120px' />
+            </div>
+            <div class="about">
+                <h2 class="title">{{cartItem.title}}</h2>
+                <h3 class="subtitle">Allergenes</h3>
+                <img src="assets/available.png" style='height:10px' />
+            </div>
+            <div class="counter">
+                <button class="btn" (click)="upAmount(cartItem)">+</button>
+                <div class=" count">{{cartItem.amount}}</div>
+                <button class="btn" (click)="lowerAmount(cartItem)">-</button>
+            </div>
+            <div class="prices">
+                <div class="amount">{{getPriceAsCurrency(cartItem)}}</div>
+                <div class="remove" (click)="removeItem(cartItem)"><u>Remove</u></div>
+            </div>
+        </div>
+        <hr>
+        <div class="checkout">
+            <div class="total">
+                <div>
+                    <div class="Subtotal">Sub-Total</div>
+                    <div class="items">{{getDistinctValues()}}</div>
+                </div>
+                <div class="total-amount">{{getTotalPrice()}}</div>
+            </div>
+            <button class="button" (click)="checkout()">Checkout</button>
+        </div>
+    </div>
+</div>
