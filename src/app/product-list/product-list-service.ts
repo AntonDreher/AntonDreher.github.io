@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AuthorizationService } from "../authorization/authorization.service";
@@ -10,16 +10,14 @@ export class ProductListService {
     constructor(private http: HttpClient, private authorization: AuthorizationService) { }
 
     getProductList(): Observable<Product[]> {
-        let httpHeaders = new HttpHeaders({
-            'Authorization': this.authorization.getToken(),
-        });
         return this.http.get<Product[]>(baseUrl + '/products');
     }
 
     getProductListByCategory(category_id: number) {
-        let httpHeaders = new HttpHeaders({
-            'Authorization': this.authorization.getToken(),
-        });
         return this.http.get<Product[]>(baseUrl + '/products/bycategory/' + category_id);
+    }
+
+    putLikeToProduct(product_id: number) {
+        return this.http.put<string>(baseUrl + '/product/' + product_id + '/like', '', { responseType: 'text' as 'json' });
     }
 }

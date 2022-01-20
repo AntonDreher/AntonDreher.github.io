@@ -14,4 +14,8 @@ export class ProductService {
         });
         return this.http.get<Blob>(baseUrl + '/product/image/' + id, { headers: httpHeaders, responseType: 'blob' as 'json' });
     }
+
+    putLikeToProduct(product_id: number) {
+        return this.http.put<string>(baseUrl + '/product/' + product_id + '/like', '', { responseType: 'text' as 'json' });
+    }
 }

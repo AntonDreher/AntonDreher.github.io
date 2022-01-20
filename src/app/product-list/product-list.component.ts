@@ -25,7 +25,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onCategorySelected(eventData: { category_id: number }) {
-    console.log(eventData);
     if (eventData.category_id === 0) {
       this.updateProductList();
     } else {
@@ -38,6 +37,18 @@ export class ProductListComponent implements OnInit {
         }
       )
     }
+  }
+
+  onProductLiked(eventData: { product_id: number }) {
+    this.productListService.putLikeToProduct(eventData.product_id).subscribe(
+      (response: string) => {
+        console.log(response);
+        this.updateProductList();
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   }
 
   ngOnInit(): void {
