@@ -9,7 +9,8 @@
             <!-- TODO show disabled products in grey-->
             <p>
                 <button class="checkout-button" type="button" (click)="addToCart(currentProduct)">Add to Cart</button>
-                <button class="like-button" type="button" (click)="likeProduct(currentProduct)">like</button>
+                <button class="like-button" type="button" (click)="likeProduct( )">like
+                    ({{currentProduct.number_of_likes}})</button>
             </p>
         </figcaption>
     </figure>

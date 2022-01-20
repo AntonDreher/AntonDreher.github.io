@@ -5,7 +5,8 @@
         </div>
 
         <div class="tm-gallery-page">
-            <app-product *ngFor="let product of productList" [currentProduct]="product"></app-product>
+            <app-product (productLiked)=onProductLiked($event) *ngFor="let product of productList"
+                [currentProduct]="product"></app-product>
         </div>
     </div>
 </main>
