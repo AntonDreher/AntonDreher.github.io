@@ -39,6 +39,17 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  onOrderByLikes() {
+    this.productListService.getProductListOrderedByLikes().subscribe(
+      (productList: Product[]) => {
+        this.productList = productList;
+      },
+      (error) => {
+        console.log(error.stack);
+      }
+    );
+  }
+
   onProductLiked(eventData: { product_id: number }) {
     this.productListService.putLikeToProduct(eventData.product_id).subscribe(
       (response: string) => {
