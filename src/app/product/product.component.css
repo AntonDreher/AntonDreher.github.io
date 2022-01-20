@@ -13,8 +13,10 @@ ul, nav, body, h1, h2, h4, h6, p, figure {
 
 a, button { transition: all 0.3s ease; }
 
+article{
+  height: 900px;
+}
 /* Bootstrap grid system  */
-
 html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar;
@@ -188,8 +190,8 @@ html {
 }
 
 .img-fluid {
-  max-width: 100%;
-  height: auto;
+  height: 200px;
+  width:300px
 }
 
 body {
@@ -408,7 +410,7 @@ p, address {
 .tm-gallery-price {
   font-size: 1.25rem;
   color: #2F956D;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .tm-paging-links {
