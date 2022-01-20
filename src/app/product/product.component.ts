@@ -25,6 +25,20 @@ export class ProductComponent implements OnInit {
     this.productLiked.emit({ product_id: this.currentProduct.product_id });
   }
 
+  private fillAllergens() {
+    this.productService.getAllergenesFromProduct(this.currentProduct.product_id).subscribe(
+      (response) => {
+        this.currentProduct.allergenes = [];
+        for (let i = 0; i < response.length; i++) {
+          this.currentProduct.allergenes.push(response[i]['allergene_code']);
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   private fillImage() {
     this.productService.getImageFromProduct(this.currentProduct.product_id).subscribe(
       (blob: Blob) => {
@@ -38,6 +52,7 @@ export class ProductComponent implements OnInit {
   }
   ngOnInit(): void {
     this.fillImage();
+    this.fillAllergens();
   }
 
 }

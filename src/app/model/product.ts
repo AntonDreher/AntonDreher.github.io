@@ -5,4 +5,5 @@ export class Product {
     price: number = 0.0;
     status: boolean = false;
     number_of_likes: number = 0;
+    allergenes: string[] = [];
 }

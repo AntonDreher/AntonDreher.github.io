@@ -9,13 +9,10 @@ export class ProductService {
     constructor(private http: HttpClient, private authorization: AuthorizationService) { }
 
     getImageFromProduct(id: number): Observable<Blob> {
-        let httpHeaders = new HttpHeaders({
-            'Authorization': this.authorization.getToken(),
-        });
-        return this.http.get<Blob>(baseUrl + '/product/image/' + id, { headers: httpHeaders, responseType: 'blob' as 'json' });
+        return this.http.get<Blob>(baseUrl + '/product/image/' + id, { responseType: 'blob' as 'json' });
     }
 
-    putLikeToProduct(product_id: number) {
-        return this.http.put<string>(baseUrl + '/product/' + product_id + '/like', '', { responseType: 'text' as 'json' });
+    getAllergenesFromProduct(id: number): Observable<any> {
+        return this.http.get(baseUrl + '/product/' + id + '/allergenes', { responseType: 'json' });
     }
 }
