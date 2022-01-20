@@ -11,6 +11,7 @@ export class CategoryListComponent implements OnInit {
   categoryList: Category[] = [];
   defaultCategory: Category = new Category(0, 'All');
   @Output() categorySelected = new EventEmitter<{ category_id: number }>();
+  @Output() orderByLikes = new EventEmitter();
   constructor(public categoryListService: CategoryListService) {
     this.updateCategoryList();
   }
@@ -20,6 +21,7 @@ export class CategoryListComponent implements OnInit {
       (categories: Category[]) => {
         this.categoryList = categories;
         this.categoryList.push(this.defaultCategory)
+        this.categoryList.push(new Category(this.categoryList.length, 'Order by Likes'));
       },
       (error) => {
         console.log(error);
@@ -28,7 +30,11 @@ export class CategoryListComponent implements OnInit {
   }
 
   onCategorySelected(eventData: { category_id: number }) {
-    this.categorySelected.emit({ category_id: eventData.category_id });
+    if (eventData.category_id === this.categoryList.length - 1) {
+      this.orderByLikes.emit();
+    } else {
+      this.categorySelected.emit({ category_id: eventData.category_id });
+    }
   }
 
   ngOnInit(): void {
