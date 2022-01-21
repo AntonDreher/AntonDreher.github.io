@@ -1,11 +1,12 @@
 <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item" *ngIf="currentProduct">
     <figure>
         <img [src]=imageURL alt="image" class="img-fluid tm-gallery-img">
+
         <figcaption>
             <h4 class="tm-gallery-title">{{currentProduct.title}}</h4>
-            <p class="tm-gallery-description">{{currentProduct.description}}</p>
             <p class="tm-gallery-price">Price: {{currentProduct.price}}€</p>
             <p>Allergens: {{currentProduct.allergenes}}</p>
+            <p class="tm-gallery-description">{{currentProduct.description}}</p>
             <!-- TODO show disabled products in grey-->
             <p>
                 <button class="checkout-button" type="button" (click)="addToCart(currentProduct)">Add to Cart</button>

@@ -1,8 +1,14 @@
 <div *ngIf="this.authorizationService.isLoggedIn;">
-    <h1>Best restaurant ever</h1>
-    <nav>
-        <a routerLink="/products">Menu</a>
-        <a routerLink="/shopping-cart">Shopping Cart</a>
-    </nav>
+    <div class="page align">
+        <nav class="page__menu menu">
+            <ul class="menu__list r-list">
+                <li class="menu__group"><a routerLink="/products" class="menu__link r-link text-underlined">Menu</a>
+                </li>
+                <li class="menu__group"><a routerLink="/shopping-cart"
+                        class="menu__link r-link text-underlined">Shopping Cart({{numberOfItemsInCart}})</a></li>
+                <li class="menu__group"><a class="menu__link r-link text-underlined">Call waiter</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
 <router-outlet></router-outlet>
