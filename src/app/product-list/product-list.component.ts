@@ -57,6 +57,7 @@ export class ProductListComponent implements OnInit {
         this.updateProductList();
       },
       (error) => {
+        alert(error.error);
         console.log(error);
       }
     )
