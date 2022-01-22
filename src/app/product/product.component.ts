@@ -21,19 +21,35 @@ export class ProductComponent implements OnInit {
   }
 
   likeProduct(): void {
-    this.productService.putLikeToProduct(this.currentProduct.product_id).subscribe(
-      () => {
-        this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
-          (response) => {
-            this.currentProduct.number_of_likes = response[0]['number_of_likes'];
-            this.productWasLiked = true;
-          })
-      },
-      (error) => {
-        alert(error.error);
-        console.log(error);
-      }
-    )
+
+    if (!this.productWasLiked) {
+      this.productService.putLikeToProduct(this.currentProduct.product_id).subscribe(
+        () => {
+          this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
+            (response) => {
+              this.currentProduct.number_of_likes = response[0]['number_of_likes'];
+              this.productWasLiked = true;
+            })
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.productService.removeLikeFromProduct(this.currentProduct.product_id).subscribe(
+        () => {
+          this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
+            (response) => {
+              this.currentProduct.number_of_likes = response[0]['number_of_likes'];
+              this.productWasLiked = false;
+              console.log(response);
+            })
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   private fillAllergens() {

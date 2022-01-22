@@ -20,11 +20,14 @@ export class ProductService {
         return this.http.put<string>(baseUrl + '/product/' + product_id + '/like', '', { responseType: 'text' as 'json' });
     }
 
+    removeLikeFromProduct(product_id: number): Observable<string> {
+        return this.http.put<string>(baseUrl + '/product/' + product_id + '/removelike', '', { responseType: 'text' as 'json' });
+    }
     getNumberOfLikesFromProduct(product_id: number): Observable<any> {
         return this.http.get<any>(baseUrl + '/product/' + product_id + '/numberoflikes', { responseType: 'json' });
     }
 
     getProductWasLikedFromSession(product_id: number): Observable<boolean> {
-        return this.http.get<boolean>(baseUrl + '/product/' + product_id + '/wasliked', { responseType: 'json' });
+        return this.http.get<boolean>(baseUrl + '/product/' + product_id + '/wasliked');
     }
 }
