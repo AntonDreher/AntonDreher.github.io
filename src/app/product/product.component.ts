@@ -43,7 +43,6 @@ export class ProductComponent implements OnInit {
           (response) => {
             this.currentProduct.number_of_likes = response[0]['number_of_likes'];
             this.productWasLiked = false;
-            console.log(response);
           })
       },
       (error) => {
@@ -84,28 +83,22 @@ export class ProductComponent implements OnInit {
 
   likeProduct(): void {
     if (this.productWasDisliked) {
-      console.log("Remove dislike and put like");
       this.removeDislikeFromProduct();
       this.putLikeToProduct();
     } else if (this.productWasLiked) {
-      console.log("remove like");
       this.removeLikeFromProduct();
     } else {
-      console.log("Put like");
       this.putLikeToProduct();
     }
   }
 
   dislikeProduct(): void {
     if (this.productWasLiked) {
-      console.log("Remove like and put dislike");
       this.removeLikeFromProduct();
       this.putDislikeToProduct();
     } else if (this.productWasDisliked) {
-      console.log("Remove Dislike");
       this.removeDislikeFromProduct();
     } else {
-      console.log("put dislike");
       this.putDislikeToProduct();
     }
   }

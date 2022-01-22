@@ -19,7 +19,7 @@ export class AppComponent {
   getNumberOfItemsInCart() {
     this.cartService.getItems().subscribe(
       (items: CartItem[]) => {
-        this.numberOfItemsInCart = items.length;
+        console.log(items);
       }
     );
   }

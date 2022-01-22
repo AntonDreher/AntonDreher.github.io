@@ -23,10 +23,8 @@ export class AuthorizationComponent implements OnInit {
       (response: any) => {
         localStorage.setItem('access_token', response.token);
         this.router.navigate(['/products']);
-        console.log(1);
       },
       (error) => {
-        //TODO 
         console.log(error);
       }
     );
