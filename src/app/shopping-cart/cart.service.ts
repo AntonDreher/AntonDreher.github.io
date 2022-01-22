@@ -30,12 +30,10 @@ export class CartService {
       this.cartItems.forEach(function (cartItem) {
         if (cartItem.itemId === toAdd.itemId) {
           cartItem.amount += toAdd.amount;
-          console.log(cartItem.amount)
         }
       })
     } else {
       this.cartItems.push(toAdd);
-      console.log(toAdd.amount);
     }
   }
 

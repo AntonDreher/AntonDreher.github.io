@@ -12,7 +12,6 @@ export class PayComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit() :void {
-    console.log("thnkas for your order");
+  submit(): void {
   }
 }

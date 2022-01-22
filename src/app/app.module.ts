@@ -18,7 +18,9 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryListService } from './category-list/category-list-service';
 import { ProductService } from './product/product-service';
-
+import { ToastrModule } from 'ngx-toastr';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,12 +32,14 @@ import { ProductService } from './product/product-service';
     PayComponent,
     CategoryComponent,
     CategoryListComponent,
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthorizationService,

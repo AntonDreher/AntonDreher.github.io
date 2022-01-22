@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthorizationService } from './authorization/authorization.service';
 import { CartItem } from './model/cartItem';
 import { CartService } from './shopping-cart/cart.service';
@@ -10,17 +10,9 @@ import { CartService } from './shopping-cart/cart.service';
 })
 export class AppComponent {
   title = 'GuestView';
-  numberOfItemsInCart: number = 0;
+
+
   constructor(public authorizationService: AuthorizationService, public cartService: CartService) {
-    this.getNumberOfItemsInCart();
   }
 
-
-  getNumberOfItemsInCart() {
-    this.cartService.getItems().subscribe(
-      (items: CartItem[]) => {
-        this.numberOfItemsInCart = items.length;
-      }
-    );
-  }
 }

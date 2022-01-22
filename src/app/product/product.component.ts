@@ -4,6 +4,9 @@ import { Input } from '@angular/core';
 import { CartService } from '../shopping-cart/cart.service';
 import { ProductService } from './product-service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -14,7 +17,7 @@ export class ProductComponent implements OnInit {
   imageURL: SafeUrl;
   productWasLiked: boolean = false;
   productWasDisliked: boolean = false;
-  constructor(private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
+  constructor(private _snackBar: MatSnackBar, private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
   }
 
   addToCart(prodToAdd: Product): void {
@@ -43,7 +46,6 @@ export class ProductComponent implements OnInit {
           (response) => {
             this.currentProduct.number_of_likes = response[0]['number_of_likes'];
             this.productWasLiked = false;
-            console.log(response);
           })
       },
       (error) => {
@@ -84,28 +86,22 @@ export class ProductComponent implements OnInit {
 
   likeProduct(): void {
     if (this.productWasDisliked) {
-      console.log("Remove dislike and put like");
       this.removeDislikeFromProduct();
       this.putLikeToProduct();
     } else if (this.productWasLiked) {
-      console.log("remove like");
       this.removeLikeFromProduct();
     } else {
-      console.log("Put like");
       this.putLikeToProduct();
     }
   }
 
   dislikeProduct(): void {
     if (this.productWasLiked) {
-      console.log("Remove like and put dislike");
       this.removeLikeFromProduct();
       this.putDislikeToProduct();
     } else if (this.productWasDisliked) {
-      console.log("Remove Dislike");
       this.removeDislikeFromProduct();
     } else {
-      console.log("put dislike");
       this.putDislikeToProduct();
     }
   }
