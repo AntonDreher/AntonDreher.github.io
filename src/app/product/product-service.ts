@@ -15,4 +15,12 @@ export class ProductService {
     getAllergenesFromProduct(id: number): Observable<any> {
         return this.http.get(baseUrl + '/product/' + id + '/allergenes', { responseType: 'json' });
     }
+
+    putLikeToProduct(product_id: number) {
+        return this.http.put<string>(baseUrl + '/product/' + product_id + '/like', '', { responseType: 'text' as 'json' });
+    }
+
+    getNumberOfLikesFromProduct(product_id: number): Observable<any> {
+        return this.http.get<any>(baseUrl + '/product/' + product_id + '/numberoflikes', { responseType: 'json' });
+    }
 }

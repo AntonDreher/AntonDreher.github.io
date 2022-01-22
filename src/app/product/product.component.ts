@@ -12,7 +12,6 @@ import { EventEmitter } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
   @Input() currentProduct: Product;
-  @Output() productLiked = new EventEmitter<{ product_id: number }>();
   imageURL: SafeUrl;
   constructor(private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
   }
@@ -22,7 +21,18 @@ export class ProductComponent implements OnInit {
   }
 
   likeProduct(): void {
-    this.productLiked.emit({ product_id: this.currentProduct.product_id });
+    this.productService.putLikeToProduct(this.currentProduct.product_id).subscribe(
+      () => {
+        this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
+          (response) => {
+            this.currentProduct.number_of_likes = response[0]['number_of_likes'];
+          })
+      },
+      (error) => {
+        alert(error.error);
+        console.log(error);
+      }
+    )
   }
 
   private fillAllergens() {
