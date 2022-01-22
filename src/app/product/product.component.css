@@ -877,3 +877,15 @@ address {
   width: 100%;
   font-size: 18px;
 }
+
+.dislike-button{
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: lightcoral;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}

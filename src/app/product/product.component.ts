@@ -12,7 +12,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class ProductComponent implements OnInit {
   @Input() currentProduct: Product;
   imageURL: SafeUrl;
-  productWasLiked: boolean;
+  productWasLiked: boolean = false;
+  productWasDisliked: boolean = false;
   constructor(private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
   }
 
@@ -20,38 +21,94 @@ export class ProductComponent implements OnInit {
     this.cartService.addItem(prodToAdd, this.imageURL);
   }
 
-  likeProduct(): void {
+  private putLikeToProduct() {
+    this.productService.putLikeToProduct(this.currentProduct.product_id).subscribe(
+      () => {
+        this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
+          (response) => {
+            this.currentProduct.number_of_likes = response[0]['number_of_likes'];
+            this.productWasLiked = true;
+          })
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
-    if (!this.productWasLiked) {
-      this.productService.putLikeToProduct(this.currentProduct.product_id).subscribe(
-        () => {
-          this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
-            (response) => {
-              this.currentProduct.number_of_likes = response[0]['number_of_likes'];
-              this.productWasLiked = true;
-            })
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  private removeLikeFromProduct() {
+    this.productService.removeLikeFromProduct(this.currentProduct.product_id).subscribe(
+      () => {
+        this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
+          (response) => {
+            this.currentProduct.number_of_likes = response[0]['number_of_likes'];
+            this.productWasLiked = false;
+            console.log(response);
+          })
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  private putDislikeToProduct() {
+    this.productService.putDislikeToProduct(this.currentProduct.product_id).subscribe(
+      () => {
+        this.productService.getNumberOfDislikesFromProduct(this.currentProduct.product_id).subscribe(
+          (response) => {
+            this.currentProduct.number_of_dislikes = response[0]['number_of_dislikes'];
+            this.productWasDisliked = true;
+          })
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  private removeDislikeFromProduct() {
+    this.productService.removeDislikeFromProduct(this.currentProduct.product_id).subscribe(
+      () => {
+        this.productService.getNumberOfDislikesFromProduct(this.currentProduct.product_id).subscribe(
+          (response) => {
+            this.currentProduct.number_of_dislikes = response[0]['number_of_dislikes'];
+            this.productWasDisliked = false;
+          })
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  likeProduct(): void {
+    if (this.productWasDisliked) {
+      console.log("Remove dislike and put like");
+      this.removeDislikeFromProduct();
+      this.putLikeToProduct();
+    } else if (this.productWasLiked) {
+      console.log("remove like");
+      this.removeLikeFromProduct();
     } else {
-      this.productService.removeLikeFromProduct(this.currentProduct.product_id).subscribe(
-        () => {
-          this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
-            (response) => {
-              this.currentProduct.number_of_likes = response[0]['number_of_likes'];
-              this.productWasLiked = false;
-              console.log(response);
-            })
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      console.log("Put like");
+      this.putLikeToProduct();
     }
   }
 
+  dislikeProduct(): void {
+    if (this.productWasLiked) {
+      console.log("Remove like and put dislike");
+      this.removeLikeFromProduct();
+      this.putDislikeToProduct();
+    } else if (this.productWasDisliked) {
+      console.log("Remove Dislike");
+      this.removeDislikeFromProduct();
+    } else {
+      console.log("put dislike");
+      this.putDislikeToProduct();
+    }
+  }
   private fillAllergens() {
     this.productService.getAllergenesFromProduct(this.currentProduct.product_id).subscribe(
       (response) => {
@@ -89,10 +146,22 @@ export class ProductComponent implements OnInit {
     )
   }
 
+  private checkIfProductWasDisliked() {
+    this.productService.getProductWasDislikedFromSession(this.currentProduct.product_id).subscribe(
+      (response: boolean) => {
+        this.productWasDisliked = response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
   ngOnInit(): void {
     this.fillImage();
     this.fillAllergens();
     this.checkIfProductWasLiked();
+    this.checkIfProductWasDisliked();
   }
 
 }

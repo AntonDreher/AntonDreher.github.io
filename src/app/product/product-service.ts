@@ -30,4 +30,19 @@ export class ProductService {
     getProductWasLikedFromSession(product_id: number): Observable<boolean> {
         return this.http.get<boolean>(baseUrl + '/product/' + product_id + '/wasliked');
     }
+
+    removeDislikeFromProduct(product_id: number): Observable<string> {
+        return this.http.put<string>(baseUrl + '/product/' + product_id + '/removedislike', '', { responseType: 'text' as 'json' });
+    }
+    getNumberOfDislikesFromProduct(product_id: number): Observable<any> {
+        return this.http.get<any>(baseUrl + '/product/' + product_id + '/numberofdislikes', { responseType: 'json' });
+    }
+
+    getProductWasDislikedFromSession(product_id: number): Observable<boolean> {
+        return this.http.get<boolean>(baseUrl + '/product/' + product_id + '/wasdisliked');
+    }
+
+    putDislikeToProduct(product_id: number) {
+        return this.http.put<string>(baseUrl + '/product/' + product_id + '/dislike', '', { responseType: 'text' as 'json' });
+    }
 }

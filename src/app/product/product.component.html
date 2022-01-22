@@ -13,6 +13,8 @@
                 <button class="like-button" type="button" (click)="likeProduct()">{{productWasLiked ? 'You liked this!'
                     : 'like'}}
                     ({{currentProduct.number_of_likes}})</button>
+                <button class="dislike-button" type="button" (click)="dislikeProduct()">{{productWasDisliked ? 'You
+                    disliked this!' : 'dislike'}}({{currentProduct.number_of_dislikes}})</button>
             </p>
         </figcaption>
     </figure>
