@@ -23,4 +23,8 @@ export class ProductService {
     getNumberOfLikesFromProduct(product_id: number): Observable<any> {
         return this.http.get<any>(baseUrl + '/product/' + product_id + '/numberoflikes', { responseType: 'json' });
     }
+
+    getProductWasLikedFromSession(product_id: number): Observable<boolean> {
+        return this.http.get<boolean>(baseUrl + '/product/' + product_id + '/wasliked', { responseType: 'json' });
+    }
 }

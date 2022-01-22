@@ -1,10 +1,9 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../model/product';
 import { Input } from '@angular/core';
 import { CartService } from '../shopping-cart/cart.service';
 import { ProductService } from './product-service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -13,6 +12,7 @@ import { EventEmitter } from '@angular/core';
 export class ProductComponent implements OnInit {
   @Input() currentProduct: Product;
   imageURL: SafeUrl;
+  productWasLiked: boolean;
   constructor(private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
   }
 
@@ -26,6 +26,7 @@ export class ProductComponent implements OnInit {
         this.productService.getNumberOfLikesFromProduct(this.currentProduct.product_id).subscribe(
           (response) => {
             this.currentProduct.number_of_likes = response[0]['number_of_likes'];
+            this.productWasLiked = true;
           })
       },
       (error) => {
@@ -60,9 +61,22 @@ export class ProductComponent implements OnInit {
       }
     );
   }
+
+  private checkIfProductWasLiked() {
+    this.productService.getProductWasLikedFromSession(this.currentProduct.product_id).subscribe(
+      (response: boolean) => {
+        this.productWasLiked = response;
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
   ngOnInit(): void {
     this.fillImage();
     this.fillAllergens();
+    this.checkIfProductWasLiked();
   }
 
 }
