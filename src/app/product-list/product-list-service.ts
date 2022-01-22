@@ -17,10 +17,6 @@ export class ProductListService {
         return this.http.get<Product[]>(baseUrl + '/products/bycategory/' + category_id);
     }
 
-    putLikeToProduct(product_id: number) {
-        return this.http.put<string>(baseUrl + '/product/' + product_id + '/like', '', { responseType: 'text' as 'json' });
-    }
-
     getProductListOrderedByLikes(): Observable<Product[]> {
         return this.http.get<Product[]>(baseUrl + '/products/orderbylikes');
     }

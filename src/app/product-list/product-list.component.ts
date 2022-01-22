@@ -49,20 +49,6 @@ export class ProductListComponent implements OnInit {
       }
     );
   }
-
-  onProductLiked(eventData: { product_id: number }) {
-    this.productListService.putLikeToProduct(eventData.product_id).subscribe(
-      (response: string) => {
-        console.log(response);
-        this.updateProductList();
-      },
-      (error) => {
-        alert(error.error);
-        console.log(error);
-      }
-    )
-  }
-
   ngOnInit(): void {
   }
 
