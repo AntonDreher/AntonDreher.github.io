@@ -1,4 +1,3 @@
-import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../authorization/authorization.service';
@@ -29,8 +28,8 @@ export class PayComponent implements OnInit {
             this.cartService.getOidByToken(orderData.token).subscribe(
               (response: any) => {
                 let data = JSON.parse(JSON.stringify(response[0]));
-                console.log("OID: " + data.oID);
-                this.cartService.insertInOrederedProducts(data.oID).subscribe(
+                console.log("OID: " + data.oid);
+                this.cartService.insertInOrderedProducts(data.oid).subscribe(
                   (response: any) => {
                     console.log("fertig mit order");
                   },

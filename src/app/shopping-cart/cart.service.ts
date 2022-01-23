@@ -116,7 +116,7 @@ export class CartService {
     return this.http.get<string>(baseUrl + '/getOrderIdbyToken/' + token);
   }
 
-  public insertInOrederedProducts(id: number): Observable<string> {
+  public insertInOrderedProducts(id: number): Observable<string> {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
