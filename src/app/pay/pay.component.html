@@ -1,5 +1,5 @@
 <h1>Payment</h1>
-<form onsubmit="submit()">
+<form >
     <label for="name">Name </label>
     <input id="name" type="text"><br>
     <label for="cardNr">Credit Card Number </label>
@@ -8,5 +8,5 @@
     <input id="expirationdate" type="text" placeholder="MM/YY"><br>
     <label for="securityNr">Security Number </label>
     <input id="securityNr" type="number" placeholder="123"><br>
-    <button type="submit">Submit</button>
+    <button (click)="submit()" type="submit">Submit</button>
 </form>

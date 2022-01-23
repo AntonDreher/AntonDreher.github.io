@@ -4,8 +4,6 @@ import { Input } from '@angular/core';
 import { CartService } from '../shopping-cart/cart.service';
 import { ProductService } from './product-service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
 
 @Component({
   selector: 'app-product',
@@ -17,7 +15,7 @@ export class ProductComponent implements OnInit {
   imageURL: SafeUrl;
   productWasLiked: boolean = false;
   productWasDisliked: boolean = false;
-  constructor(private _snackBar: MatSnackBar, private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
+  constructor(private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
   }
 
   addToCart(prodToAdd: Product): void {
