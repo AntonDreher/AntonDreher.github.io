@@ -1,0 +1,83 @@
+<head>
+    <title>Restaurant Feedback Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="testbox">
+        <form>
+            <p>Please help us improve our restaurant services by filling in our feedback form. Thank you!</p>
+            <h4>Name</h4>
+            <div class="name">
+                <input type="text" name="name" placeholder="First" required [(ngModel)]="currentReview.firstname" />
+                <input type="text" name="name" placeholder="Last" required [(ngModel)]="currentReview.lastname" />
+            </div>
+            <h4>Email</h4>
+            <input type="email" name="name" [(ngModel)]="currentReview.email" />
+            <h4>Day Visited<span>*</span></h4>
+            <div class="day-visited">
+                <input type="date" name="dayvisited" required [(ngModel)]="currentReview.day_visited" />
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h4>Time Visited<span>*</span></h4>
+            <div class="time-visited">
+                <input type="time" name="timevisited" required [(ngModel)]="currentReview.time_visited" />
+                <i class="fas fa-clock"></i>
+            </div>
+            <table>
+                <tr>
+                    <th class="first-col"></th>
+                    <th>Amazing</th>
+                    <th>Good</th>
+                    <th>Decent</th>
+                    <th>Disappointing</th>
+                </tr>
+                <tr>
+                    <td class="first-col">Food Quality</td>
+                    <td><input type="radio" value="1" name="Food" [(ngModel)]="currentReview.food_quality" /></td>
+                    <td><input type="radio" value="2" name="Food" [(ngModel)]="currentReview.food_quality" /></td>
+                    <td><input type="radio" value="3" name="Food" [(ngModel)]="currentReview.food_quality" /></td>
+                    <td><input type="radio" value="4" name="Food" [(ngModel)]="currentReview.food_quality" /></td>
+                </tr>
+                <tr>
+                    <td class="first-col">Overall Service Quality</td>
+                    <td><input type="radio" value="1" name="Service" [(ngModel)]="currentReview.service_quality" /></td>
+                    <td><input type="radio" value="2" name="Service" [(ngModel)]="currentReview.service_quality" /></td>
+                    <td><input type="radio" value="3" name="Service" [(ngModel)]="currentReview.service_quality" /></td>
+                    <td><input type="radio" value="4" name="Service" [(ngModel)]="currentReview.service_quality" /></td>
+                </tr>
+                <tr>
+                    <td class="first-col">Speed of Service</td>
+                    <td><input type="radio" value="1" name="Speed" [(ngModel)]="currentReview.speed_quality" /></td>
+                    <td><input type="radio" value="2" name="Speed" [(ngModel)]="currentReview.speed_quality" /></td>
+                    <td><input type="radio" value="3" name="Speed" [(ngModel)]="currentReview.speed_quality" /></td>
+                    <td><input type="radio" value="4" name="Speed" [(ngModel)]="currentReview.speed_quality" /></td>
+                </tr>
+                <tr>
+                    <td class="first-col">Price</td>
+                    <td><input type="radio" value="1" name="Price" [(ngModel)]="currentReview.price_quality" /></td>
+                    <td><input type="radio" value="2" name="Price" [(ngModel)]="currentReview.price_quality" /></td>
+                    <td><input type="radio" value="3" name="Price" [(ngModel)]="currentReview.price_quality" /></td>
+                    <td><input type="radio" value="4" name="Price" [(ngModel)]="currentReview.price_quality" /></td>
+                </tr>
+                <tr>
+                    <td class="first-col">Overall Experience</td>
+                    <td><input type="radio" value="1" name="Experience" [(ngModel)]="currentReview.overall_quality" />
+                    </td>
+                    <td><input type="radio" value="2" name="Experience" [(ngModel)]="currentReview.overall_quality" />
+                    </td>
+                    <td><input type="radio" value="3" name="Experience" [(ngModel)]="currentReview.overall_quality" />
+                    </td>
+                    <td><input type="radio" value="4" name="Experience" [(ngModel)]="currentReview.overall_quality" />
+                    </td>
+                </tr>
+            </table>
+            <h4>Any comments, questions or suggestions?</h4>
+            <textarea rows="5" name="name" [(ngModel)]="currentReview.additional_comment"></textarea>
+            <div class="btn-block">
+                <button type="submit" (click)="sendReview()">Send Feedback</button>
+            </div>
+        </form>
+    </div>
