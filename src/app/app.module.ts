@@ -19,6 +19,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryListService } from './category-list/category-list-service';
 import { ProductService } from './product/product-service';
 import { ReviewFormComponent } from './review-form/review-form.component';
+import { ReviewService } from './review-form/review.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ReviewFormComponent } from './review-form/review-form.component';
     },
     ProductListService,
     CategoryListService,
-    ProductService
+    ProductService,
+    ReviewService,
   ],
   bootstrap: [AppComponent]
 })

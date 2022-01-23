@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Review } from '../model/review';
+import { ReviewService } from './review.service';
 
 @Component({
   selector: 'app-review-form',
@@ -8,7 +10,7 @@ import { Review } from '../model/review';
 })
 export class ReviewFormComponent implements OnInit {
   currentReview: Review;
-  constructor() {
+  constructor(private reviewService: ReviewService, private router: Router) {
     this.currentReview = new Review();
   }
 
@@ -16,6 +18,13 @@ export class ReviewFormComponent implements OnInit {
   }
 
   sendReview() {
-    console.log(this.currentReview);
+    this.reviewService.postReview(this.currentReview).subscribe(
+      (response: string) => {
+        this.router.navigate(['/products']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
