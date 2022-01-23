@@ -22,7 +22,8 @@ export class PayComponent implements OnInit {
     //order in db
     this.cartService.pay(123456, 123).subscribe(
       (response: any) => {
-        let orderData = new OrderData(response.token, 2, this.cartService.calculateTotalPrice(), this.cartService.getItemsForOrder());
+        console.log(this.authorization.getDecodedAccessToken().name);
+        let orderData = new OrderData(response.token, this.authorization.getDecodedAccessToken().name, this.cartService.calculateTotalPrice(), this.cartService.getItemsForOrder());
         this.cartService.order(orderData).subscribe(
           (response: any) => {
             this.cartService.getOidByToken(orderData.token).subscribe(
@@ -32,6 +33,7 @@ export class PayComponent implements OnInit {
                 this.cartService.insertInOrderedProducts(data.oid).subscribe(
                   (response: any) => {
                     console.log("fertig mit order");
+                    this.cartService.clearShoppingCart();
                   },
                   (error: any) => {
                     console.log(error);

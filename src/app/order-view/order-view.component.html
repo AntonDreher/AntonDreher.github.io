@@ -1,0 +1,23 @@
+<div >
+    <ul class="heroes">
+        <li *ngFor="let order of orders" (click)="onselect(order)" class="prod">
+            <p>Order ID: {{order.oid}}</p>
+            <p>Date: {{order.date}}</p>
+            <p>Status: {{order.status}}</p>
+            <p>Total Amount: {{order.amount}}€</p>
+            <p>Table ID: {{order.id}}</p>
+            <div *ngIf="selecetedOrderProducts">
+                <div *ngIf="selecetedOrderProducts[0].oid == order.oid">
+                    <ul>
+                        <li  *ngFor="let prod of selecetedOrderProducts" class="detail">
+                            <p>{{prod.amount}} * {{prod.title}}</p>                            
+                            <p>Status: {{prod.state}}</p>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </li>
+    </ul>
+
+</div>

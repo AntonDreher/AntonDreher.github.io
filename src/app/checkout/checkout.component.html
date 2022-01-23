@@ -7,10 +7,13 @@
         <a>={{product.amount*product.price}}€</a>
     </li>
 </ul>
-<p>Total: {{getTotalPrice()}}</p>
+<p>Total: {{getTotalPrice()}}€</p>
 <button (click)="goBack()">Back</button>
+
 <a routerLink="/pay">
     <button (click)="pay()">Pay</button>
 </a>
+
+
 
 <router-outlet></router-outlet>

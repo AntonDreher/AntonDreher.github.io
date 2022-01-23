@@ -8,6 +8,10 @@ import { HttpClient } from '@angular/common/http';
 import { AuthorizationService } from '../authorization/authorization.service';
 import { OrderData } from '../model/orderData';
 import { OrderItemsData } from '../model/orderItemsData';
+import { OrderViewData } from '../model/orderViewData';
+import { OrderViewComponent } from '../order-view/order-view.component';
+import { OrderedProduct } from '../model/orderedProduct';
+import { ProductListService } from '../product-list/product-list-service';
 const baseUrl = 'http://localhost:3000';
 
 @Injectable({
@@ -15,10 +19,30 @@ const baseUrl = 'http://localhost:3000';
 })
 export class CartService {
   private cartItems: CartItem[];
+  //private productList: Product[] = [];
 
-  constructor(private http: HttpClient, private authorization: AuthorizationService) {
+  constructor(private http: HttpClient, private authorization: AuthorizationService, private prodservice: ProductListService) {
     this.cartItems = [];
+    
   }
+
+  /*private updateProductList() {
+    this.prodservice.getProductList().subscribe(
+      (productList: Product[]) => {
+        this.productList = productList;
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  } 
+
+  public getProducts(): Product[] {
+    console.log("helllooo");
+    this.updateProductList();
+    console.log("inserv:" + this.productList.length);
+    return this.productList;
+  }*/
 
   public getItems(): Observable<CartItem[]> {
     return of(this.cartItems);
@@ -131,6 +155,44 @@ export class CartService {
 
     return this.http.post<string>(baseUrl + '/testPost', data, options);
   }
+
+  public getOrdersByTableID(id: string) : Observable<OrderViewData[]>{
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = {
+      headers: httpHeaders
+    }
+
+    let tID = this.authorization.getDecodedAccessToken().name;
+
+
+
+
+    return this.http.get<OrderViewData[]>(baseUrl + '/getOrdersByID/' + tID);
+
+
+  }
+
+  public getProductsFromOrder(id: number) : Observable<OrderedProduct[]>{
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = {
+      headers: httpHeaders
+    }
+
+    
+
+
+
+
+    return this.http.get<OrderedProduct[]>(baseUrl + '/getProductsFromOrder/' + id);
+
+
+  }
+
+  
 
 
 

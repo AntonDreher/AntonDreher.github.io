@@ -1,12 +1,12 @@
 <h1>Payment</h1>
 <form >
     <label for="name">Name </label>
-    <input id="name" type="text"><br>
+    <input id="name" type="text" value="Max Mustermann"><br>
     <label for="cardNr">Credit Card Number </label>
-    <input id="cardNr"><br>
+    <input id="cardNr" value="123456"><br>
     <label for="expirationdate">Expires </label>
-    <input id="expirationdate" type="text" placeholder="MM/YY"><br>
+    <input id="expirationdate" type="text" value="12/25" placeholder="MM/YY"><br>
     <label for="securityNr">Security Number </label>
-    <input id="securityNr" type="number" placeholder="123"><br>
+    <input id="securityNr" type="number" value="123" placeholder="123"><br>
     <button (click)="submit()" type="submit">Submit</button>
 </form>

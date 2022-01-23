@@ -18,6 +18,7 @@ import { CategoryComponent } from './category/category.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryListService } from './category-list/category-list-service';
 import { ProductService } from './product/product-service';
+import { OrderViewComponent } from './order-view/order-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { ProductService } from './product/product-service';
     PayComponent,
     CategoryComponent,
     CategoryListComponent,
+    OrderViewComponent,
 
   ],
   imports: [
