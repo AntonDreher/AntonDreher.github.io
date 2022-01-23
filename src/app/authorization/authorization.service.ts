@@ -45,7 +45,7 @@ export class AuthorizationService {
         }
     }
 
-    private getDecodedAccessToken(): any {
+    public getDecodedAccessToken(): any {
         try {
             return jwt_decode(this.getToken());
         } catch (error) {
