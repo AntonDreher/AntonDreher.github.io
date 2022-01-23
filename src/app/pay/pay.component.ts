@@ -37,7 +37,6 @@ export class PayComponent implements OnInit {
                     console.log(error);
                   }
                 );
-
               },
               (error: any) => {
                 console.log(error);
