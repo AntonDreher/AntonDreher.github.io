@@ -49,6 +49,17 @@ export class ProductListComponent implements OnInit {
       }
     );
   }
+
+  onGetTopSellers() {
+    this.productListService.getProductListOrderdBySells().subscribe(
+      (productList: Product[]) => {
+        this.productList = productList;
+      },
+      (error) => {
+        console.log(error.stack);
+      }
+    )
+  }
   ngOnInit(): void {
   }
 

@@ -20,4 +20,8 @@ export class ProductListService {
     getProductListOrderedByLikes(): Observable<Product[]> {
         return this.http.get<Product[]>(baseUrl + '/products/orderbylikes');
     }
+
+    getProductListOrderdBySells(): Observable<Product[]> {
+        return this.http.get<Product[]>(baseUrl + '/products/gettopproducts');
+    }
 }

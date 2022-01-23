@@ -19,6 +19,10 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryListService } from './category-list/category-list-service';
 import { ProductService } from './product/product-service';
 import { OrderViewComponent } from './order-view/order-view.component';
+import { ReviewFormComponent } from './review-form/review-form.component';
+import { ReviewService } from './review-form/review.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +35,7 @@ import { OrderViewComponent } from './order-view/order-view.component';
     CategoryComponent,
     CategoryListComponent,
     OrderViewComponent,
-
+    ReviewFormComponent,
   ],
   imports: [
     HttpClientModule,
@@ -48,7 +52,8 @@ import { OrderViewComponent } from './order-view/order-view.component';
     },
     ProductListService,
     CategoryListService,
-    ProductService
+    ProductService,
+    ReviewService,
   ],
   bootstrap: [AppComponent]
 })

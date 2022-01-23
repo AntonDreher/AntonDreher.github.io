@@ -1,7 +1,8 @@
 <main>
     <div class="container">
         <div class="tm-paging-links">
-            <app-category-list (categorySelected)=onCategorySelected($event) (orderByLikes)=onOrderByLikes()>
+            <app-category-list (categorySelected)=onCategorySelected($event) (orderByLikes)=onOrderByLikes()
+                (getTopSellers)=onGetTopSellers()>
             </app-category-list>
         </div>
 

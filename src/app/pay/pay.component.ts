@@ -32,6 +32,7 @@ export class PayComponent implements OnInit {
                 console.log("OID: " + data.oid);
                 this.cartService.insertInOrderedProducts(data.oid).subscribe(
                   (response: any) => {
+                    this.cartService.clearShoppingCart();
                     console.log("fertig mit order");
                     this.cartService.clearShoppingCart();
                   },

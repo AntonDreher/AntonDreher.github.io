@@ -112,10 +112,7 @@ export class CartService {
     let options = {
       headers: httpHeaders
     }
-
-
     return this.http.post<string>(baseUrl + '/payment', '{"cardNr": "' + cardNr + '", "cardSecret": "' + cardSecret + '"}', options);
-
   }
 
   public order(orderData: OrderData): Observable<string> {
