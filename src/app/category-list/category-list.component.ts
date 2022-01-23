@@ -12,6 +12,7 @@ export class CategoryListComponent implements OnInit {
   defaultCategory: Category = new Category(0, 'All');
   @Output() categorySelected = new EventEmitter<{ category_id: number }>();
   @Output() orderByLikes = new EventEmitter();
+  @Output() getTopSellers = new EventEmitter();
   constructor(public categoryListService: CategoryListService) {
     this.updateCategoryList();
   }
@@ -22,6 +23,7 @@ export class CategoryListComponent implements OnInit {
         this.categoryList = categories;
         this.categoryList.push(this.defaultCategory)
         this.categoryList.push(new Category(this.categoryList.length, 'Order by Likes'));
+        this.categoryList.push(new Category(this.categoryList.length, 'Top sellers'));
       },
       (error) => {
         console.log(error);
@@ -30,9 +32,12 @@ export class CategoryListComponent implements OnInit {
   }
 
   onCategorySelected(eventData: { category_id: number }) {
-    if (eventData.category_id === this.categoryList.length - 1) {
+    if (eventData.category_id === this.categoryList.length - 2) {
       this.orderByLikes.emit();
-    } else {
+    } else if (eventData.category_id === this.categoryList.length - 1) {
+      this.getTopSellers.emit();
+    }
+    else {
       this.categorySelected.emit({ category_id: eventData.category_id });
     }
   }
