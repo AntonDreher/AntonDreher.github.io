@@ -23,26 +23,8 @@ export class CartService {
 
   constructor(private http: HttpClient, private authorization: AuthorizationService, private prodservice: ProductListService) {
     this.cartItems = [];
-    
+
   }
-
-  /*private updateProductList() {
-    this.prodservice.getProductList().subscribe(
-      (productList: Product[]) => {
-        this.productList = productList;
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  } 
-
-  public getProducts(): Product[] {
-    console.log("helllooo");
-    this.updateProductList();
-    console.log("inserv:" + this.productList.length);
-    return this.productList;
-  }*/
 
   public getItems(): Observable<CartItem[]> {
     return of(this.cartItems);
@@ -122,11 +104,7 @@ export class CartService {
     let options = {
       headers: httpHeaders
     }
-
-
     return this.http.post<string>(baseUrl + '/order', orderData, options);
-
-
   }
 
   public getOidByToken(token: string): Observable<string> {
@@ -153,7 +131,7 @@ export class CartService {
     return this.http.post<string>(baseUrl + '/testPost', data, options);
   }
 
-  public getOrdersByTableID(id: string) : Observable<OrderViewData[]>{
+  public getOrdersByTableID(id: string): Observable<OrderViewData[]> {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
@@ -171,25 +149,17 @@ export class CartService {
 
   }
 
-  public getProductsFromOrder(id: number) : Observable<OrderedProduct[]>{
+  public getProductsFromOrder(id: number): Observable<OrderedProduct[]> {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     let options = {
       headers: httpHeaders
     }
-
-    
-
-
-
-
     return this.http.get<OrderedProduct[]>(baseUrl + '/getProductsFromOrder/' + id);
-
-
   }
 
-  
+
 
 
 

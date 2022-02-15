@@ -9,6 +9,9 @@ const baseUrl = 'http://localhost:3000';
 export class CategoryListService {
     constructor(private http: HttpClient, private authorization: AuthorizationService) { }
 
+    /**@method */
+    /**@returns {Observable<Category[]} */
+    /**Makes a get request, to get all categories */
     getCategories(): Observable<Category[]> {
         let httpHeaders = new HttpHeaders({
             'Authorization': this.authorization.getToken(),

@@ -18,10 +18,15 @@ export class ProductComponent implements OnInit {
   constructor(private cartService: CartService, private productService: ProductService, private sanitizer: DomSanitizer) {
   }
 
+  /**@method*/
+  /* adds a specific product to the cart
+   */
   addToCart(prodToAdd: Product): void {
     this.cartService.addItem(prodToAdd, this.imageURL);
   }
 
+  /**@method */
+  /**adds a like to a specific product, and updates the view  */
   private putLikeToProduct() {
     this.productService.putLikeToProduct(this.currentProduct.product_id).subscribe(
       () => {
@@ -37,6 +42,8 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  /**@method */
+  /**unlike a product (not dislike), like is removed in the backend and then the view is updated */
   private removeLikeFromProduct() {
     this.productService.removeLikeFromProduct(this.currentProduct.product_id).subscribe(
       () => {
@@ -51,7 +58,8 @@ export class ProductComponent implements OnInit {
       }
     );
   }
-
+  /**@method */
+  /**adds a dislike to a specific product, and updates the view  */
   private putDislikeToProduct() {
     this.productService.putDislikeToProduct(this.currentProduct.product_id).subscribe(
       () => {
@@ -66,7 +74,8 @@ export class ProductComponent implements OnInit {
       }
     );
   }
-
+  /**@method */
+  /**undislike a product (not like), dislike is removed in the backend and then the view is updated */
   private removeDislikeFromProduct() {
     this.productService.removeDislikeFromProduct(this.currentProduct.product_id).subscribe(
       () => {
@@ -81,7 +90,12 @@ export class ProductComponent implements OnInit {
       }
     );
   }
-
+  /**@method */
+  /**if the like button is clicked there are three possible scenarios:
+   * 1. the product was already disliked (then remove the dislike and add a like)
+   * 2. the product was already liked (then remove the like)
+   * 3. nothing has happened before (add the like to the product)
+   */
   likeProduct(): void {
     if (this.productWasDisliked) {
       this.removeDislikeFromProduct();
@@ -92,7 +106,12 @@ export class ProductComponent implements OnInit {
       this.putLikeToProduct();
     }
   }
-
+  /**@method */
+  /**if the dislike button is clicked there are three possible scenarios:
+   * 1. the product was already liked (then remove the like and add a dislike)
+   * 2. the product was already disliked (then remove the dislike)
+   * 3. nothing has happened before (add the dislike to the product)
+   */
   dislikeProduct(): void {
     if (this.productWasLiked) {
       this.removeLikeFromProduct();
@@ -103,6 +122,9 @@ export class ProductComponent implements OnInit {
       this.putDislikeToProduct();
     }
   }
+
+  /**@method */
+  /**gets the allergenes for a specific product */
   private fillAllergens() {
     this.productService.getAllergenesFromProduct(this.currentProduct.product_id).subscribe(
       (response) => {
@@ -117,6 +139,8 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  /**@method */
+  /**gets an image for the product from the backend, and assigns it to the matching product */
   private fillImage() {
     this.productService.getImageFromProduct(this.currentProduct.product_id).subscribe(
       (blob: Blob) => {
@@ -129,6 +153,8 @@ export class ProductComponent implements OnInit {
     );
   }
 
+  /**@method */
+  /**checks in the backend if a product was already liked by the current session */
   private checkIfProductWasLiked() {
     this.productService.getProductWasLikedFromSession(this.currentProduct.product_id).subscribe(
       (response: boolean) => {
@@ -139,7 +165,8 @@ export class ProductComponent implements OnInit {
       }
     )
   }
-
+  /**@method */
+  /**checks in the backend if a product was already disliked by the current session */
   private checkIfProductWasDisliked() {
     this.productService.getProductWasDislikedFromSession(this.currentProduct.product_id).subscribe(
       (response: boolean) => {

@@ -7,7 +7,6 @@
             <p class="tm-gallery-price">Price: {{currentProduct.price}}€</p>
             <p>Allergens: {{currentProduct.allergenes}}</p>
             <p class="tm-gallery-description">{{currentProduct.description}}</p>
-            <!-- TODO show disabled products in grey-->
             <p>
                 <button class="checkout-button" type="button" (click)="addToCart(currentProduct)">Add to Cart</button>
                 <button class="like-button" type="button" (click)="likeProduct()">{{productWasLiked ? 'You liked this!'

@@ -6,6 +6,8 @@ import { AuthorizationService } from "src/app/authorization/authorization.servic
 export class AuthInterceptor implements HttpInterceptor {
     constructor(private authService: AuthorizationService) { }
 
+    /**@method */
+    /**intercepts all outgoing http requests and add the store jwt to the request header as authorization */
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const authToken = this.authService.getToken();
         req = req.clone({

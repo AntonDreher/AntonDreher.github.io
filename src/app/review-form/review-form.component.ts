@@ -17,6 +17,8 @@ export class ReviewFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**@method */
+  /**sends a review to the backend and redirects to the menu page */
   sendReview() {
     this.reviewService.postReview(this.currentReview).subscribe(
       (response: string) => {

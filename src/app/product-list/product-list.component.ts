@@ -13,6 +13,8 @@ export class ProductListComponent implements OnInit {
     this.updateProductList();
   }
 
+  /**@method */
+  /**gets the latest product list from the backend */
   private updateProductList() {
     this.productListService.getProductList().subscribe(
       (productList: Product[]) => {
@@ -24,6 +26,8 @@ export class ProductListComponent implements OnInit {
     )
   }
 
+  /**@method */
+  /** when a category is changed, the productlist also has to be updated */
   onCategorySelected(eventData: { category_id: number }) {
     if (eventData.category_id === 0) {
       this.updateProductList();
@@ -38,7 +42,8 @@ export class ProductListComponent implements OnInit {
       )
     }
   }
-
+  /**@method */
+  /** ges the product list sorted by likes */
   onOrderByLikes() {
     this.productListService.getProductListOrderedByLikes().subscribe(
       (productList: Product[]) => {
@@ -49,7 +54,8 @@ export class ProductListComponent implements OnInit {
       }
     );
   }
-
+  /**@method */
+  /** ges the product list sorted by sales */
   onGetTopSellers() {
     this.productListService.getProductListOrderdBySells().subscribe(
       (productList: Product[]) => {
