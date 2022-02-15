@@ -22,7 +22,9 @@ export class PayComponent implements OnInit {
     //order in db
     this.cartService.pay(123456, 123).subscribe(
       (response: any) => {
-        let orderData = new OrderData(response.token, 2, this.cartService.calculateTotalPrice(), this.cartService.getItemsForOrder());
+        console.log(this.authorization.getDecodedAccessToken().name);
+        let orderData = new OrderData(response.token, this.authorization.getDecodedAccessToken().name, this.cartService.calculateTotalPrice(), this.cartService.getItemsForOrder());
+        console.log(orderData);
         this.cartService.order(orderData).subscribe(
           (response: any) => {
             this.cartService.getOidByToken(orderData.token).subscribe(
@@ -33,6 +35,7 @@ export class PayComponent implements OnInit {
                   (response: any) => {
                     this.cartService.clearShoppingCart();
                     console.log("fertig mit order");
+                    this.cartService.clearShoppingCart();
                   },
                   (error: any) => {
                     console.log(error);
@@ -46,14 +49,12 @@ export class PayComponent implements OnInit {
             this.router.navigate(['/products'])
           },
           (error: any) => {
-            //TODO 
             console.log(error);
           }
         );
         this.router.navigate(['/products'])
       },
       (error: any) => {
-        //TODO 
         console.log("error")
         console.log(error);
       }

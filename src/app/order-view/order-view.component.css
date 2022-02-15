@@ -1,0 +1,35 @@
+/* HeroesComponent's private CSS styles */
+.heroes {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+  }
+  li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    
+    border-radius: 4px;
+  }
+  .prod:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+    left: .1em;
+  }
+  .prod.selected {
+    background-color: black;
+    color: white;
+  }
+  .prod.selected:hover {
+    background-color: #505050;
+    color: white;
+  }
+  .prod.selected:active {
+    background-color: blue;
+    color: blue;
+  }
+  

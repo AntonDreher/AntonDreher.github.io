@@ -21,11 +21,14 @@ export class CheckoutComponent implements OnInit {
     this.getProducts();
   }
 
+  /**@method */
+  /**adds all items that are in the cart to the CartItem Array */
   getProducts(): void {
-    //this.products = this.cartService.getItems();
     this.cartService.getItems().subscribe(products => this.products = products);
   }
-
+  /**@method */
+  /**@returns {number} totalPrice*/
+  /**calls the cartservice method for calculating the total price */
   getTotalPrice(): number {
     return this.cartService.calculateTotalPrice();
   }

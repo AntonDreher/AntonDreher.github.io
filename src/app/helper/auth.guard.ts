@@ -12,6 +12,8 @@ export class AuthGuard implements CanActivate {
     public router: Router
   ) { }
 
+  /**@method */
+  /**To protect routes for unauthorised access */
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
